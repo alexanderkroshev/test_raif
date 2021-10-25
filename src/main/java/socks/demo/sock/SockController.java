@@ -30,21 +30,15 @@ public class SockController {
         sockService.save(sock);
     }
 
-//    @GetMapping()
-//    public List findByColorAndCottonPart(@RequestParam("color") String color
-//                                        //@RequestParam("operation") String operation,
-//                                        //@RequestParam("cottonPart") Integer cottonPart
-//    ) {
-//        return  sockService.findByCriteria(color);
-////        if (operation.equals("moreThan"))
-////            return sockService.findSocksByColorAndCottonPartMoreThan(color, cottonPart);
-////        else if (operation.equals("lessThan"))
-////            return sockService.findSocksByColorAndCottonPartLessThan(color, cottonPart);
-////        else //if (operation.equals("equal"))
-////            return sockService.findSocksByColorAndCottonPartEqual(color, cottonPart);
-////        else
-////            return
-//    }
-
-
+    @GetMapping()
+    public Integer getTotalResidue(@RequestParam("color") String color,
+                                   @RequestParam("cottonPart") int cottonPart,
+                                   @RequestParam("operation") ComparativeOperator operator) {
+        return sockService.findSum(color, cottonPart, operator);
+    }
 }
+
+
+
+
+

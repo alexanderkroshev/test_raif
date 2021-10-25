@@ -16,20 +16,5 @@ import java.util.Optional;
 
 public interface SockRepository extends JpaRepository<Sock,Long> {
 
-
-    @Query(value = "select SUM(quantity) from Sock where color = :color and cotton_part > :cottonPart", nativeQuery = true)
-    Optional<Integer> findSocksByColorAndCottonPartMoreThan(@Param("color") String color, @Param("cottonPart") Integer cottonPart);
-
-    @Query(value = "select SUM(quantity) from Sock where color = :color and cotton_part < :cottonPart", nativeQuery = true)
-    Optional<Integer> findSocksByColorAndCottonPartLessThan(@Param("color") String color, @Param("cottonPart") Integer cottonPart);
-
-    @Query(value = "select SUM(quantity) from Sock where color = :color and cotton_part = :cottonPart", nativeQuery = true)
-    Optional<Integer> findSocksByColorAndCottonPartEqual(@Param("color") String color, @Param("cottonPart") Integer cottonPart);
-
-
-
-
-
 }
 
-//    select SUM(quantity) from Sock where color = :color and cotton_part :sign :cottonPart

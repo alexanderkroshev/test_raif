@@ -18,7 +18,6 @@ public class Sock {
 
     private int cottonPart;
 
-
     private int quantity;
 
 

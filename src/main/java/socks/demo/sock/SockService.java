@@ -1,22 +1,20 @@
 package socks.demo.sock;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SockService {
 
     private final SockRepository sockRepository;
+    private final EnrichedSockRepository enrichedSockRepository;
 
     @Autowired
-    public SockService(SockRepository sockRepository) {
-
+    public SockService(SockRepository sockRepository, EnrichedSockRepository enrichedSockRepository) {
         this.sockRepository = sockRepository;
+        this.enrichedSockRepository = enrichedSockRepository;
     }
 
     public void save(Sock sock) {
@@ -28,20 +26,7 @@ public class SockService {
         return sockRepository.findAll();
     }
 
-    public List<Sock> findByCriteria(String color) {
-return  null;
-     //   return CustomCriteria.amountOfSocksByCriteria(color);
+    public Integer findSum(String color, int cottonPart, ComparativeOperator operator) {
+        return enrichedSockRepository.amountOfSocks(color, cottonPart, operator);
     }
-//
-//    public Optional<Integer> findSocksByColorAndCottonPartEqual(String color, Integer cottonPart) {
-//        return sockRepository.findSocksByColorAndCottonPartEqual(color, cottonPart);
-//    }
-//
-//    public Optional<Integer> findSocksByColorAndCottonPartMoreThan(String color, Integer cottonPart) {
-//        return sockRepository.findSocksByColorAndCottonPartMoreThan(color, cottonPart);
-//    }
-//
-//    public Optional<Integer> findSocksByColorAndCottonPartLessThan(String color, Integer cottonPart) {
-//        return sockRepository.findSocksByColorAndCottonPartLessThan(color, cottonPart);
-//    }
 }
