@@ -26,22 +26,22 @@ public class EnrichedSockRepository {
         CriteriaQuery<Integer> cq = cb.createQuery(Integer.class);
         Root<Sock> sockRoot = cq.from(Sock.class);
 
-        Predicate predicateForColor = cb.equal(sockRoot.get("color"), color);
-        Predicate predicateForCottonPart;
+        Predicate predicateColor = cb.equal(sockRoot.get("color"), color);
+        Predicate predicateCotton;
         switch (operator) {
             case moreThan:
-                predicateForCottonPart = cb.greaterThan(sockRoot.get("cottonPart"), cottonPart);
+                predicateCotton = cb.greaterThan(sockRoot.get("cottonPart"), cottonPart);
                 break;
             case lessThan:
-                predicateForCottonPart = cb.lessThan(sockRoot.get("cottonPart"), cottonPart);
+                predicateCotton = cb.lessThan(sockRoot.get("cottonPart"), cottonPart);
                 break;
             case equal:
-                predicateForCottonPart = cb.equal(sockRoot.get("cottonPart"), cottonPart);
+                predicateCotton = cb.equal(sockRoot.get("cottonPart"), cottonPart);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + operator);
         }
-        cq.select(cb.sum(sockRoot.get("quantity"))).where(predicateForColor, predicateForCottonPart);
+        cq.select(cb.sum(sockRoot.get("quantity"))).where(predicateColor, predicateCotton);
 
         TypedQuery<Integer> query = em.createQuery(cq);
         Integer result = query.getResultList().get(0);

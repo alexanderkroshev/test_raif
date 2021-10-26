@@ -4,6 +4,8 @@ package socks.demo.sock;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 
 
 @Entity

@@ -22,10 +22,6 @@ public class SockService {
     }
 
 
-    public List<Sock> findAll() {
-        return sockRepository.findAll();
-    }
-
     public Integer findSum(String color, int cottonPart, ComparativeOperator operator) {
         return enrichedSockRepository.amountOfSocks(color, cottonPart, operator);
     }
