@@ -28,9 +28,6 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
-                    checkConstraint: quantity>100
-
-
 
 
 

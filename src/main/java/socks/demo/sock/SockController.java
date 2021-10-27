@@ -16,11 +16,10 @@ public class SockController {
         this.sockService = sockService;
     }
 
-
     @PostMapping("/income")
     public void saveIncome(@RequestParam("color") String color,
-                           @RequestParam("quantity") int quantity,
-                           @RequestParam("cottonPart") int cottonPart) {
+                           @RequestParam("quantity")  int quantity,
+                           @RequestParam("cottonPart")  int cottonPart) {
         save(color, quantity, cottonPart);
     }
 
