@@ -1,13 +1,11 @@
-package socks.demo.sock;
+package ru.raiffeisen.app;
 
 
 import lombok.Data;
-
 import javax.persistence.*;
-import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
+
 
 
 @Entity

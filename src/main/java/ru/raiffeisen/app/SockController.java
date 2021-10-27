@@ -1,9 +1,7 @@
-package socks.demo.sock;
+package ru.raiffeisen.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Locale;
 
 @RestController
 @RequestMapping("/api/socks")
@@ -41,10 +39,10 @@ public class SockController {
     }
 
     @GetMapping()
-    public Integer getTotalResidue(@RequestParam("color") String color,
-                                   @RequestParam("cottonPart") int cottonPart,
-                                   @RequestParam("operation") ComparativeOperator operator) {
-        String colorLowerCase = color.toLowerCase();
+    public Integer getRemainingSocksAmount(@RequestParam("color") String color,
+                                           @RequestParam("cottonPart") int cottonPart,
+                                           @RequestParam("operation") ComparativeOperator operator) {
+                String colorLowerCase = color.toLowerCase();
         return sockService.findSum(colorLowerCase, cottonPart, operator);
     }
 }

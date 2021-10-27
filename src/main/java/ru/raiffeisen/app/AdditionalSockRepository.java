@@ -1,4 +1,4 @@
-package socks.demo.sock;
+package ru.raiffeisen.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

@@ -1,4 +1,4 @@
-package socks.demo.sock;
+package ru.raiffeisen.app;
 
 public enum ComparativeOperator {
     moreThan, lessThan, equal

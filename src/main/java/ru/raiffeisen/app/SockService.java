@@ -1,4 +1,4 @@
-package socks.demo.sock;
+package ru.raiffeisen.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,6 @@ public class SockService {
     public void save(Sock sock) {
         sockRepository.save(sock);
     }
-
 
     public Integer findSum(String color, int cottonPart, ComparativeOperator operator) {
         return additionalSockRepository.amountOfSocks(color, cottonPart, operator);
