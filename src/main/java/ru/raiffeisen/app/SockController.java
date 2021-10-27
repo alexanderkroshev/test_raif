@@ -16,8 +16,8 @@ public class SockController {
 
     @PostMapping("/income")
     public void saveIncome(@RequestParam("color") String color,
-                           @RequestParam("quantity")  int quantity,
-                           @RequestParam("cottonPart")  int cottonPart) {
+                           @RequestParam("quantity") int quantity,
+                           @RequestParam("cottonPart") int cottonPart) {
         save(color, quantity, cottonPart);
     }
 
@@ -42,7 +42,7 @@ public class SockController {
     public Integer getRemainingSocksAmount(@RequestParam("color") String color,
                                            @RequestParam("cottonPart") int cottonPart,
                                            @RequestParam("operation") ComparativeOperator operator) {
-                String colorLowerCase = color.toLowerCase();
+        String colorLowerCase = color.toLowerCase();
         return sockService.findSum(colorLowerCase, cottonPart, operator);
     }
 }
