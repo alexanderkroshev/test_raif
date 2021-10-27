@@ -3,18 +3,16 @@ package socks.demo.sock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class SockService {
 
     private final SockRepository sockRepository;
-    private final EnrichedSockRepository enrichedSockRepository;
+    private final AdditionalSockRepository additionalSockRepository;
 
     @Autowired
-    public SockService(SockRepository sockRepository, EnrichedSockRepository enrichedSockRepository) {
+    public SockService(SockRepository sockRepository, AdditionalSockRepository additionalSockRepository) {
         this.sockRepository = sockRepository;
-        this.enrichedSockRepository = enrichedSockRepository;
+        this.additionalSockRepository = additionalSockRepository;
     }
 
     public void save(Sock sock) {
@@ -23,6 +21,6 @@ public class SockService {
 
 
     public Integer findSum(String color, int cottonPart, ComparativeOperator operator) {
-        return enrichedSockRepository.amountOfSocks(color, cottonPart, operator);
+        return additionalSockRepository.amountOfSocks(color, cottonPart, operator);
     }
 }

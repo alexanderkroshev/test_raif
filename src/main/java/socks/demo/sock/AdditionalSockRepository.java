@@ -12,12 +12,12 @@ import javax.persistence.criteria.Root;
 
 
 @Repository
-public class EnrichedSockRepository {
+public class AdditionalSockRepository {
 
     EntityManager em;
 
     @Autowired
-    public EnrichedSockRepository(EntityManager em) {
+    public AdditionalSockRepository(EntityManager em) {
         this.em = em;
     }
 

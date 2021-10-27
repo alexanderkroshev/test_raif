@@ -3,6 +3,8 @@ package socks.demo.sock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Locale;
+
 @RestController
 @RequestMapping("/api/socks")
 public class SockController {
@@ -14,19 +16,28 @@ public class SockController {
         this.sockService = sockService;
     }
 
-    @PostMapping("/income")
-    public void saveIncome(@ModelAttribute Sock sock) {
-        sockService.save(sock);
-    }
 
-    @PostMapping("/outcome")
+    @PostMapping("/income")
     public void saveIncome(@RequestParam("color") String color,
                            @RequestParam("quantity") int quantity,
                            @RequestParam("cottonPart") int cottonPart) {
+        save(color, quantity, cottonPart);
+    }
+
+    @PostMapping("/outcome")
+    public void saveOutcome(@RequestParam("color") String color,
+                            @RequestParam("quantity") int quantity,
+                            @RequestParam("cottonPart") int cottonPart) {
+        int negativeQuantity = quantity * (-1);
+        save(color, negativeQuantity, cottonPart);
+    }
+
+    private void save(String color, int quantity, int cottonPart) {
+        String colorLowerCase = color.toLowerCase();
         Sock sock = new Sock();
-        sock.setColor(color);
+        sock.setColor(colorLowerCase);
         sock.setCottonPart(cottonPart);
-        sock.setQuantity(quantity * (-1));
+        sock.setQuantity(quantity);
         sockService.save(sock);
     }
 
@@ -34,7 +45,8 @@ public class SockController {
     public Integer getTotalResidue(@RequestParam("color") String color,
                                    @RequestParam("cottonPart") int cottonPart,
                                    @RequestParam("operation") ComparativeOperator operator) {
-        return sockService.findSum(color, cottonPart, operator);
+        String colorLowerCase = color.toLowerCase();
+        return sockService.findSum(colorLowerCase, cottonPart, operator);
     }
 }
 
