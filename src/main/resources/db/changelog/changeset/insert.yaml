@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert
+      author: Alex
+      changes:
+        - sql:
+            sql: insert into sock (color, cotton_part, quantity) values ('black', 30, 10)
+        - sql:
+            sql: insert into sock (color, cotton_part, quantity) values ('red', 40, 30)
+        - sql:
+            sql: insert into sock (color, cotton_part, quantity) values ('white', 50, 25)
+        - sql:
+            sql: insert into sock (color, cotton_part, quantity) values ('blue', 60, 70)

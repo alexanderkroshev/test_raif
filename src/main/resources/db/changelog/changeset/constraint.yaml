@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert
+      author: Alex
+      changes:
+        - sql:
+            sql: alter table sock add check ( cotton_part<=100 and cotton_part>0)
